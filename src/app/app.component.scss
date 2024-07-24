@@ -1,0 +1,262 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+button, textarea {
+    all:unset;
+}
+
+button {
+    cursor:pointer;
+}
+
+a {
+    text-decoration: none;
+    color:inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+@font-face {
+    font-family: "Poppins-Regular";
+    font-weight: 400;
+    src: url("../assets/fonts/Poppins-Regular.woff2") format("woff2");
+    font-display:swap;
+}
+
+@font-face {
+    src: url("../assets/fonts/Poppins-Bold.woff2") format("woff2");
+    font-family: "Poppins-Bold";
+    font-weight: 700;
+    font-display:swap;
+}
+
+main {
+    max-width:1200px;
+    margin:120px auto;
+    width: 100%;
+
+    header {
+        width: 100%;
+        display:flex;
+        justify-content: center;
+
+        h1 {
+            font-family: "Poppins-Bold";
+            font-size: 64px;
+            line-height: 100px;
+        }
+    }
+
+    .quicknote {
+        display:flex;
+        justify-content: space-between;
+        width: 100%;
+        gap:20px;
+
+        .quicknote-new {
+            display:flex;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 100%;
+            max-width: 50%;
+            gap: 12px;
+
+            #new-title {
+                width: 100%;
+                padding: 10px 0px;
+                border: 1px solid #2E2E2E;
+                border-radius: 8px;
+            }
+
+            input[type="text"] {
+                padding-left:8px;
+            }
+
+            #new-textArea {
+                width: 100%;
+                border:1px solid #2E2E2E;
+                border-radius: 8px;
+                max-width: 100%;
+                height: 700px;
+                min-height: 700px;
+                background-color: #f9f9f9;
+                border-radius: 8px;
+                resize: vertical;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: flex-start;
+                font-size: 26px;
+                line-height: 20px;
+                padding: 8px;
+                font-family: 'Poppins-Regular';
+            }
+
+            #new-submitButton {
+                width: 100%;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                height: 40px;
+                background-color: #513373;
+                border-radius: 8px;
+                border:1px solid #513373;
+                transition: background-color 1s ease-in-out;
+                font-family: 'Poppins-Bold';
+                font-size: 18px;
+                line-height: 24px;
+                color: #fff;
+                cursor:pointer;
+
+                &:hover {
+                    background-color: #fff;
+                    color:#513373;
+                }
+            }
+        }
+
+        .quicknote-myNotes {
+            display:flex;
+            flex-direction: column;
+            gap:12px;
+            width: 100%;
+
+            header {
+                display:flex;
+                flex-direction: column;
+                gap:6px;
+                justify-content: center;
+                align-items: center;
+
+                h2 {
+                    font-family: 'Poppins-Bold';
+                    font-size: 14px;
+                    line-height: 24px;
+                    color: #fff;
+                }
+
+                menu {
+
+                    width: 100%;
+                    
+                    ul {
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+                        align-items: center;
+                        gap: 40px;
+
+                        li {
+                            width: 100%;
+                            
+                            button {
+                                width: 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                font-family: "Poppins-Bold";
+                                font-size: 14px;
+                                line-height: 24px;
+                                color: #101010;
+                                border-radius: 8px;
+                                background-color: #EFEFEF;
+                                border: 1px solid #EFEFEF;
+                                transition: background-color 1s ease-in-out;
+
+                                &:hover {
+                                    background-color: #101010;
+                                    color: #EFEFEF;
+                                }
+                            }
+                        } 
+                    }
+                }
+            }
+
+            .myNotes-notes {
+                width: 100%;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                max-height: 735px;
+
+                &::-webkit-scrollbar {
+                    width: 12px; /* Largura da scrollbar */
+                }
+                
+                /* Fundo da scrollbar */
+                &::-webkit-scrollbar-track {
+                    background: #f1f1f1; /* Cor do fundo da scrollbar */
+                }
+                
+                /* Cor do polegar da scrollbar */
+                &::-webkit-scrollbar-thumb {
+                    background-color: #888; /* Cor do polegar */
+                    border-radius: 10px; /* Cantos arredondados */
+                    border: 3px solid #f1f1f1; /* Espaço ao redor do polegar */
+                }
+                
+                /* Cor do polegar ao passar o mouse */
+                &::-webkit-scrollbar-thumb:hover {
+                    background: #555; /* Cor do polegar ao passar o mouse */
+                }
+
+                ul {
+                    display:flex;
+                    flex-direction: column;
+                    gap:4px;
+                    width: 100%;
+
+                    li {
+                        display:flex;
+                        flex-direction: column;
+                        gap:4px;
+                        height: 45px;
+                        background-color: #F9F9F9;
+                        border-bottom: 1px solid #513373;
+                        padding:16px;
+
+                        .notes-note-up {
+                            width: 100%;
+                            display:flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            h3 {
+                                font-family: 'Poppins-Bold';
+                                font-size: 16px;
+                                line-height: 24px;
+                                color: #101010;
+                            }
+
+                            span {
+                                font-family: 'Poppins-Regular';
+                                font-size: 16px;
+                                line-height: 24px;
+                                color: #101010;
+                            }
+
+                            button {
+                                display:flex;
+                                align-items: center;
+                                justify-content: center;
+
+                                img {
+                                    width: 30px;
+                                    height: 30px;
+                                    object-fit: contain;
+
+                                    &:hover {
+                                        filter:invert(1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
