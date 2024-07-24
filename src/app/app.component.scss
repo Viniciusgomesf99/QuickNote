@@ -36,7 +36,7 @@ ul {
 
 main {
     max-width:1200px;
-    margin:120px auto;
+    margin:20px auto;
     width: 100%;
 
     header {
@@ -213,7 +213,6 @@ main {
                         display:flex;
                         flex-direction: column;
                         gap:4px;
-                        height: 45px;
                         background-color: #F9F9F9;
                         border-bottom: 1px solid #513373;
                         padding:16px;
@@ -253,6 +252,18 @@ main {
                                     }
                                 }
                             }
+                        }
+
+                        p {
+                            font-family: 'Poppins-Regular';
+                            font-size: 16px;
+                            line-height: 24px;
+                            color: #101010;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 1; /* Número de linhas que você quer exibir */
+                            overflow: hidden;
+                            text-overflow: ellipsis;
                         }
                     }
                 }

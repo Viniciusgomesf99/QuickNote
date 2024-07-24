@@ -9,7 +9,7 @@ import { Notes } from "../models/notes.model";
 
 export class NotesService {
 
-    private url = `${environment.api}`;
+    private url = `${environment.api}/notes`;
     
     constructor(private httpClient: HttpClient) {
 
