@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NotesService } from './services/notes.service';
 import { Notes } from './models/notes.model';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,15 +15,14 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'QuickNote';
 
-  notas: Notes[] = []
+  notas$ = new Observable<Notes[]>;
 
   constructor(private NotesService: NotesService){
     this.obterNotasCadastradas();
   }
 
   obterNotasCadastradas() {
-    this.NotesService.GetNotes()
-    .subscribe(notas => this.notas = notas)
+    this.notas$ = this.NotesService.GetNotes();
   }
 
 }

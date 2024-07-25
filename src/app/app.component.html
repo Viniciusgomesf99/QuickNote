@@ -7,8 +7,7 @@
     <section class="quicknote">
       <section class="quicknote-new">
         <input type="text" name="new-title" id="new-title" rows="30" placeholder="Titulo da anotação">
-        <textarea name="new-textArea" id="new-textArea">
-        </textarea>
+        <textarea name="new-textArea" id="new-textArea"></textarea>
           <input type="submit" value="Salvar" id="new-submitButton">
       </section>
   
@@ -24,7 +23,7 @@
         </header>
         <div class="myNotes-notes">
           <ul>
-            <li *ngFor="let nota of notas">
+            <li *ngFor="let nota of notas$ | async">
               <div class="notes-note-up">
                 <h3>{{ nota.title }}</h3>
                 <span>{{ nota.date }}</span>
