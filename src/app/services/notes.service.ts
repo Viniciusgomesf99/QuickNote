@@ -18,4 +18,16 @@ export class NotesService {
     GetNotes(){
             return this.httpClient.get<Notes[]>(this.url)
     }
+
+    newNotes(nota:Notes){
+        return this.httpClient.post<Notes>(this.url, nota);
+    }
+
+    changeNotes(nota:Notes){
+        return this.httpClient.put<Notes>(`${this.url}/${nota.id}`, nota);
+    }
+
+    removeNotes(id: string){
+        return this.httpClient.delete<void>(`${this.url}/${id}`);
+    }
 }

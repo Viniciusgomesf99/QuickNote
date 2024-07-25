@@ -6,9 +6,14 @@
 
     <section class="quicknote">
       <section class="quicknote-new">
-        <input type="text" name="new-title" id="new-title" rows="30" placeholder="Titulo da anotação">
-        <textarea name="new-textArea" id="new-textArea"></textarea>
-          <input type="submit" value="Salvar" id="new-submitButton">
+        <form>
+          <input type="text" name="new-id" id="new-id" [(ngModel)]="id" disabled style="display:none;">
+          <input type="text" name="new-title" id="new-title" rows="30" placeholder="Titulo da anotação" [(ngModel)]="titulo">
+          <textarea name="new-textArea" id="new-textArea" [(ngModel)]="content" ></textarea>
+          <button id="new-submitButton" (click)="cadastrarNotas()">
+            {{ id ? 'Editar' : 'Criar' }}
+          </button>
+        </form>
       </section>
   
       <section class="quicknote-myNotes">
@@ -26,8 +31,16 @@
             <li *ngFor="let nota of notas$ | async">
               <div class="notes-note-up">
                 <h3>{{ nota.title }}</h3>
-                <span>{{ nota.date }}</span>
-                <button><img src="./assets/favorite.svg" alt="Favoritar"></button>
+                <div class="notes-note-up-info">
+                  <span>{{ nota.id }}</span>
+                  <span>|</span>
+                  <span>{{ nota.date }}</span>
+                </div>
+                <div class="notes-note-up-options">
+                  <button><img src="./assets/favorite.svg" alt="Favoritar"></button>
+                  <button (click)="editarNotas(nota)" ><img src="./assets/edit.svg" alt="Editar"></button>
+                  <button (click)="removerNotas(nota.id!)" ><img src="./assets/delete.png" alt="Editar"></button>
+                </div>
               </div>
               <p>{{nota.content}}</p>
             </li>

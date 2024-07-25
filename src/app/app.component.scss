@@ -3,7 +3,7 @@
     padding:0;
 }
 
-button, textarea {
+button {
     all:unset;
 }
 
@@ -65,55 +65,63 @@ main {
             max-width: 50%;
             gap: 12px;
 
-            #new-title {
+            form {
                 width: 100%;
-                padding: 10px 0px;
-                border: 1px solid #2E2E2E;
-                border-radius: 8px;
-            }
-
-            input[type="text"] {
-                padding-left:8px;
-            }
-
-            #new-textArea {
-                width: 100%;
-                border:1px solid #2E2E2E;
-                border-radius: 8px;
-                max-width: 100%;
-                height: 700px;
-                min-height: 700px;
-                background-color: #f9f9f9;
-                border-radius: 8px;
-                resize: vertical;
-                box-sizing: border-box;
                 display: flex;
-                justify-content: flex-start;
-                font-size: 26px;
-                line-height: 20px;
-                padding: 8px;
-                font-family: 'Poppins-Regular';
-            }
+                flex-direction: column;
+                gap: 14px;
+            
+                #new-title {
+                    width: 100%;
+                    padding: 10px 0px;
+                    border: 1px solid #2E2E2E;
+                    border-radius: 8px;
+                }
 
-            #new-submitButton {
-                width: 100%;
-                display:flex;
-                justify-content: center;
-                align-items: center;
-                height: 40px;
-                background-color: #513373;
-                border-radius: 8px;
-                border:1px solid #513373;
-                transition: background-color 1s ease-in-out;
-                font-family: 'Poppins-Bold';
-                font-size: 18px;
-                line-height: 24px;
-                color: #fff;
-                cursor:pointer;
+                &::placeholder {
+                    padding-left:8px;
+                    margin-left: 8px;
+                }
 
-                &:hover {
-                    background-color: #fff;
-                    color:#513373;
+                #new-textArea {
+                    width: 100%;
+                    border:1px solid #2E2E2E;
+                    border-radius: 8px;
+                    max-width: 100%;
+                    height: 650px;
+                    min-height: 650px;
+                    background-color: #f9f9f9;
+                    border-radius: 8px;
+                    resize: vertical;
+                    box-sizing: border-box;
+                    display: flex;
+                    justify-content: flex-start;
+                    font-size: 26px;
+                    line-height: 20px;
+                    padding: 20px;
+                    font-family: 'Poppins-Regular';
+                }
+
+                #new-submitButton {
+                    width: 100%;
+                    display:flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 40px;
+                    background-color: #513373;
+                    border-radius: 8px;
+                    border:1px solid #513373;
+                    transition: background-color 1s ease-in-out;
+                    font-family: 'Poppins-Bold';
+                    font-size: 18px;
+                    line-height: 24px;
+                    color: #fff;
+                    cursor:pointer;
+
+                    &:hover {
+                        background-color: #fff;
+                        color:#513373;
+                    }
                 }
             }
         }
@@ -228,30 +236,48 @@ main {
                                 font-size: 16px;
                                 line-height: 24px;
                                 color: #101010;
+                                max-width: 250px;
+                                overflow: hidden;
                             }
 
-                            span {
-                                font-family: 'Poppins-Regular';
-                                font-size: 16px;
-                                line-height: 24px;
-                                color: #101010;
+                            .notes-note-up-info {
+                                
+                                display:flex;
+                                gap:8px;
+                                align-items: center;
+
+                                span {
+                                    font-family: 'Poppins-Regular';
+                                    font-size: 16px;
+                                    line-height: 24px;
+                                    color: #101010;
+                                }
                             }
 
-                            button {
+
+                            .notes-note-up-options {
+
                                 display:flex;
                                 align-items: center;
-                                justify-content: center;
+                                gap:10px;
 
-                                img {
-                                    width: 30px;
-                                    height: 30px;
-                                    object-fit: contain;
-
-                                    &:hover {
-                                        filter:invert(1);
+                                button {
+                                    display:flex;
+                                    align-items: center;
+                                    justify-content: center;
+    
+                                    img {
+                                        width: 30px;
+                                        height: 30px;
+                                        object-fit: contain;
+    
+                                        &:hover {
+                                            filter: contrast(0.5);
+                                        }
                                     }
                                 }
                             }
+
                         }
 
                         p {
@@ -264,6 +290,8 @@ main {
                             -webkit-line-clamp: 1; /* Número de linhas que você quer exibir */
                             overflow: hidden;
                             text-overflow: ellipsis;
+                            max-width: 500px;
+                            overflow: hidden;
                         }
                     }
                 }

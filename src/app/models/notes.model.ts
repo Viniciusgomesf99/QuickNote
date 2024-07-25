@@ -1,8 +1,8 @@
 export interface Notes {
-    id: number,
-    date: Date,
+    id?: string,
+    date?: string,
     title: string,
     content: string,
-    fav: boolean,
-    pinned: boolean
+    fav?: boolean,
+    pinned?: boolean
 }
