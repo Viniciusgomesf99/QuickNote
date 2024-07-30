@@ -7,30 +7,6 @@
       "date": "24/07/2024",
       "fav": true,
       "pinned": false
-    },
-    {
-      "id": "1",
-      "title": "Lorem Ipsum",
-      "content": "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum ",
-      "date": "25/07/2024",
-      "fav": false,
-      "pinned": false
-    },
-    {
-      "id": "2",
-      "title": "paro",
-      "content": "paro",
-      "date": "25/07/2024",
-      "fav": false,
-      "pinned": false
-    },
-    {
-      "id": "3",
-      "title": "Lorem Ipsum",
-      "content": "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum ",
-      "date": "25/07/2024",
-      "fav": false,
-      "pinned": false
     }
   ]
 }
