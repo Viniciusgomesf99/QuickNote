@@ -20,14 +20,18 @@ export class NotesService {
     }
 
     newNotes(nota:Notes){
-        return this.httpClient.post<Notes>(this.url, nota);
+        return this.httpClient.post<Notes>(this.url, { ...nota, id:undefined});
     }
 
     changeNotes(nota:Notes){
         return this.httpClient.put<Notes>(`${this.url}/${nota.id}`, nota);
     }
 
-    removeNotes(id: string){
+    favoriteNotes(nota:Notes){
+        return this.httpClient.put<Notes>(`${this.url}/${nota.id}`, nota);
+    }
+
+    removeNotes(id: number){
         return this.httpClient.delete<void>(`${this.url}/${id}`);
     }
 }

@@ -16,58 +16,80 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent {
   title = 'QuickNote';
 
-  notas$ = new Observable<Notes[]>;
+  notas$: Observable<Notes[]>;
 
-  //form
-  id = '';
-  titulo = ''
-  content = ''
-  date = ''
+  // form
+  id: number | undefined = undefined;
+  titulo = '';
+  content = '';
+  date = '';
 
   dateConst = new Date(Date.now());
   formattedDate = this.dateConst.getDate().toString().padStart(2, '0') + '/' + (this.dateConst.getMonth() + 1).toString().padStart(2, '0') + '/' + this.dateConst.getFullYear();
 
-  constructor(private NotesService: NotesService){
+  constructor(private notesService: NotesService) {
+    this.notas$ = new Observable<Notes[]>();
     this.obterNotasCadastradas();
   }
 
   obterNotasCadastradas() {
-    this.notas$ = this.NotesService.GetNotes();
+    this.notas$ = this.notesService.GetNotes();
   }
 
-  cadastrarNotas(){
-    if (!this.titulo || !this.content)
-      return
+  cadastrarNotas() {
+    if (!this.titulo || !this.content) return;
 
-    if (this.id){
-      this.atualizar();
-      return;
-    }
-
-    const dateConst = new Date(Date.now());
-    var formattedDate = dateConst.getDate().toString().padStart(2, '0') + '/' + (dateConst.getMonth() + 1).toString().padStart(2, '0') + '/' + dateConst.getFullYear();
-    
-    return this.NotesService.newNotes({id: this.id, title: this.titulo, content: this.content, date: formattedDate, fav: false, pinned: false }).subscribe(_ => this.obterNotasCadastradas);
-  }
-
-  atualizar () {
-    this.NotesService.changeNotes({
-      id: this.id,
+    const nota: Notes = {
+      id: this.id ? this.id : undefined,
       title: this.titulo,
       content: this.content,
-      date: this.formattedDate.toString()
-    }).subscribe(_=> this.obterNotasCadastradas());
+      date: this.formattedDate,
+      fav: false,
+      pinned: false
+    };
+
+    if (this.id) {
+      this.atualizar(nota);
+    } else {
+      this.notesService.newNotes(nota).subscribe(() => {
+        this.obterNotasCadastradas();
+        this.limparFormulario();
+      });
+    }
   }
 
-  editarNotas(nota:Notes){
-    this.id = nota.id!.toString();
+  atualizar(nota: Notes) {
+    this.notesService.changeNotes(nota).subscribe(() => {
+      this.obterNotasCadastradas();
+      this.limparFormulario();
+    });
+  }
+
+  editarNotas(nota: Notes) {
+    this.id = nota.id!;
     this.titulo = nota.title;
     this.content = nota.content;
     this.date = nota.date!;
   }
 
-  removerNotas(id: string) {
-    this.NotesService.removeNotes(id).subscribe(_=> this.obterNotasCadastradas);
+  favoriteNotas(nota: Notes){
+
+    nota.fav = !nota.fav;
+    
+    this.notesService.favoriteNotes(nota).subscribe(_ => {
+      this.obterNotasCadastradas();
+    })
   }
 
+  removerNotas(id: number) {
+    this.notesService.removeNotes(id).subscribe(() => {
+      this.obterNotasCadastradas();
+    });
+  }
+
+  limparFormulario() {
+    this.id = undefined;
+    this.titulo = '';
+    this.content = '';
+  }
 }
