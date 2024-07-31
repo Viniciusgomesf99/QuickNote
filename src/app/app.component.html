@@ -1,51 +1,39 @@
 <main>
-
-    <header>
-      <h1>QuickNote</h1>
-    </header>
-
-    <section class="quicknote">
-      <section class="quicknote-new">
-        <form>
-          <input type="text" name="new-id" id="new-id" [(ngModel)]="id" disabled style="display:none;">
-          <input type="text" name="new-title" id="new-title" rows="30" placeholder="Titulo da anotação" [(ngModel)]="titulo">
-          <textarea name="new-textArea" id="new-textArea" [(ngModel)]="content" ></textarea>
-          <button id="new-submitButton" type="button" (click)="cadastrarNotas()">
-            {{ id ? 'Editar' : 'Criar' }}
-          </button>
-        </form>
-      </section>
+    <div class="wrapper">
+      <header>
+        <h1>QuickNote</h1>
+      </header>
   
-      <section class="quicknote-myNotes">
-        <header>
-          <h2>Minhas anotações</h2>
-          <menu>
+      <section class="quicknote">
+        <section class="quicknote-new">
+          <form>
+            <input type="text" name="new-id" id="new-id" [(ngModel)]="id" disabled style="display:none;">
+            <input type="text" name="new-title" id="new-title" rows="30" placeholder="Titulo da anotação" [(ngModel)]="titulo">
+            <textarea name="new-textArea" id="new-textArea" [(ngModel)]="content" ></textarea>
+            <button id="new-submitButton" type="button" (click)="cadastrarNotas()">
+              {{ id ? 'Editar' : 'Criar' }}
+            </button>
+          </form>
+        </section>
+    
+        <section class="quicknote-myNotes">
             <ul>
-              <li><button>Novas</button></li>
-              <li><button>Favoritas</button></li>
-            </ul>
-          </menu>
-        </header>
-        <div class="myNotes-notes">
-          <ul>
-            <li *ngFor="let nota of notas$ | async">
-              <div class="notes-note-up">
-                <h3>{{ nota.title }}</h3>
-                <div class="notes-note-up-info">
+              <li *ngFor="let nota of notas$ | async">
+                <div class="notes-note-up">
+                  <h3>{{ nota.title }}</h3>
                   <span>{{ nota.date }}</span>
+                  <div class="notes-note-up-options">
+                    <button (click)="favoriteNotas(nota)"><img [src]="nota.fav ? './assets/favoriteNewClicked.png' : './assets/favoriteNew.png'" alt="Favoritar"></button>
+                    <button (click)="editarNotas(nota)" ><img src="./assets/edit.svg" alt="Editar"></button>
+                    <button (click)="removerNotas(nota.id!)" ><img src="./assets/delete.png" alt="Editar"></button>
+                  </div>
                 </div>
-                <div class="notes-note-up-options">
-                  <button (click)="favoriteNotas(nota)"><img [src]="nota.fav ? './assets/favoriteNewClicked.png' : './assets/favoriteNew.png'" alt="Favoritar"></button>
-                  <button (click)="editarNotas(nota)" ><img src="./assets/edit.svg" alt="Editar"></button>
-                  <button (click)="removerNotas(nota.id!)" ><img src="./assets/delete.png" alt="Editar"></button>
-                </div>
-              </div>
-              <p>{{nota.content}}</p>
-            </li>
-          </ul>
-        </div>
+                <p>{{nota.content}}</p>
+              </li>
+            </ul>
+        </section>
       </section>
-    </section>
+    </div>
 </main>
 
 <router-outlet />

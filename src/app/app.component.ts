@@ -17,6 +17,7 @@ export class AppComponent {
   title = 'QuickNote';
 
   notas$: Observable<Notes[]>;
+  allNotas: Notes[] = [];
 
   // form
   id: number | undefined = undefined;
@@ -33,7 +34,15 @@ export class AppComponent {
   }
 
   obterNotasCadastradas() {
-    this.notas$ = this.notesService.GetNotes();
+    this.notesService.GetNotes().subscribe(notas => {
+      this.allNotas = notas;
+      this.allNotas.sort((a, b) => (b.fav ? 1:0) - (a.fav ? 1:0));
+      this.atualizarNotasExibidas();
+    })
+  }
+
+  atualizarNotasExibidas() {
+      this.notas$ = new Observable(observer => observer.next(this.allNotas));
   }
 
   cadastrarNotas() {
@@ -73,9 +82,7 @@ export class AppComponent {
   }
 
   favoriteNotas(nota: Notes){
-
     nota.fav = !nota.fav;
-    
     this.notesService.favoriteNotes(nota).subscribe(_ => {
       this.obterNotasCadastradas();
     })
